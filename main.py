@@ -87,8 +87,8 @@ class MySvc (win32serviceutil.ServiceFramework):
                         details="Drawing", 
                         state=message, 
                         large_image="Clipstudio", 
-                        large_text="Clip Studio Paint"
-                        small_image="Drawing"
+                        large_text="Clip Studio Paint",
+                        small_image="Drawing",
                         small_text="Drawing")
 
         else: # inactive
@@ -98,8 +98,8 @@ class MySvc (win32serviceutil.ServiceFramework):
                         details="Inactive", 
                         state=message, 
                         large_image="Clipstudio", 
-                        large_text="Clip Studio Paint"
-                        small_image="Inactive"
+                        large_text="Clip Studio Paint",
+                        small_image="Inactive",
                         small_text="Inactive")
 
     # メインループ関数
