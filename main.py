@@ -73,7 +73,7 @@ class MySvc (win32serviceutil.ServiceFramework):
 
         self.main_loop()
 
-    def get_h_m_s(td: datetime.timedelta):
+    def get_h_m_s(self, td: datetime.timedelta):
         m, s = divmod(td.seconds, 60)
         h, m = divmod(m, 60)
         return h, m, s
@@ -81,7 +81,7 @@ class MySvc (win32serviceutil.ServiceFramework):
     def main_task(self):
         if get_active_window_title == "CLIP STUDIO PAINT":
             self.d_time += self.d_time_delta
-            h, m, s = get_h_m_s(self.d_time)
+            h, m, s = self.get_h_m_s(self.d_time)
             message = "累計お絵かき時間: {h}時間 {m}分"
             RPC.update( pid=12345, 
                         details="Drawing", 
@@ -92,7 +92,7 @@ class MySvc (win32serviceutil.ServiceFramework):
                         small_text="Drawing")
 
         else: # inactive
-            h, m, s = get_h_m_s(self.d_time)
+            h, m, s = self.get_h_m_s(self.d_time)
             message = "累計お絵かき時間: {h}時間 {m}分"
             RPC.update( pid=12345, 
                         details="Inactive", 
